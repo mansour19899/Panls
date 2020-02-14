@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64af9716e97341f39ddb7d4d35d74f42" Name="Diagram1">
+        <EntityTypeShape EntityType="VanmeModel.Barcode" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.Brand" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.CategoriesSubCategory" Width="1.5" PointX="0.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.Category" Width="1.5" PointX="1.5" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.Color" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.Company" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.Country" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.Image" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.Material" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.OwnProduct" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.ProductType" Width="1.5" PointX="3" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.SubCategory" Width="1.5" PointX="1.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="VanmeModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="VanmeModel.FK_Product_Barcode" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_Product_Brands" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_CategoriesSubCategories_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_CategoriesSubCategories_SubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_ProductType_CategoriesSubCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_Product_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_Company_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_OwnProduct_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_Product_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_Image_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_Product_Materials" ManuallyRouted="false" />
+        <AssociationConnector Association="VanmeModel.FK_OwnProduct_ProductType" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

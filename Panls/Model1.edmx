@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VanmeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Barcode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="BarcodeNumber" Type="nchar" MaxLength="12" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="CategoriesSubCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Category_Id_fk" Type="int" Nullable="false" />
+          <Property Name="SubCategory_Id_fk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Sku_code" Type="nchar" MaxLength="2" Nullable="false" />
+          <Property Name="StyleNum_code" Type="nchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="PantoneNumber" Type="nchar" MaxLength="20" />
+          <Property Name="Code" Type="nchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CompanyName" Type="nchar" MaxLength="100" />
+          <Property Name="Manufacture" Type="nchar" MaxLength="100" />
+          <Property Name="Website" Type="nchar" MaxLength="100" />
+          <Property Name="Email" Type="nchar" MaxLength="50" />
+          <Property Name="StreetAddress" Type="nchar" MaxLength="100" />
+          <Property Name="AddressLine2" Type="nchar" MaxLength="100" />
+          <Property Name="City" Type="nchar" MaxLength="50" />
+          <Property Name="StateProvinceRegion" Type="nchar" MaxLength="50" />
+          <Property Name="ZipPostlCode" Type="nchar" MaxLength="20" />
+          <Property Name="Country_Id_fk" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nchar" MaxLength="100" />
+          <Property Name="FAX" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="Code" Type="nchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="nchar" MaxLength="16" />
+          <Property Name="Product_Id_fk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MaterialName" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="OwnProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ProductType_Id_fk" Type="int" />
+          <Property Name="ProductTittle" Type="nchar" MaxLength="30" />
+          <Property Name="Brand_Id_fk" Type="int" />
+          <Property Name="Color_Id_fk" Type="int" />
+          <Property Name="Material_Id_fk" Type="int" />
+          <Property Name="RFIDProtected" Type="bit" />
+          <Property Name="TSAApprovedLock" Type="bit" />
+          <Property Name="CheckPointFriendly" Type="bit" />
+          <Property Name="Expandable" Type="bit" />
+          <Property Name="WaterResistance" Type="bit" />
+          <Property Name="RetractableHandle" Type="bit" />
+          <Property Name="DescribeMaterial" Type="text" />
+          <Property Name="Price" Type="real" />
+          <Property Name="Width" Type="real" />
+          <Property Name="length" Type="real" />
+          <Property Name="Depth" Type="real" />
+          <Property Name="Height" Type="real" />
+          <Property Name="Weight" Type="real" />
+          <Property Name="Gsm" Type="smallint" />
+          <Property Name="Box" Type="bit" />
+          <Property Name="Wrap" Type="bit" />
+          <Property Name="NoPackaging" Type="bit" />
+          <Property Name="AirTransportation" Type="bit" />
+          <Property Name="ShipTransportation" Type="bit" />
+          <Property Name="Train" Type="bit" />
+          <Property Name="Truck" Type="bit" />
+          <Property Name="Company_Id_fk" Type="int" />
+          <Property Name="CountryofOrgin_Id_fk" Type="int" />
+          <Property Name="Barcode_Id_fk" Type="int" />
+          <Property Name="Bag" Type="bit" />
+          <Property Name="SpecialPackingInstructions" Type="text" />
+          <Property Name="Sku" Type="nchar" MaxLength="30" />
+          <Property Name="StyleNumber" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" />
+          <Property Name="Code" Type="nchar" MaxLength="3" />
+          <Property Name="Categorysubcategoreis_Id_fk" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="Code" Type="nchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="30" />
+          <Property Name="Pass" Type="nchar" MaxLength="10" />
+          <Property Name="MacAdress" Type="nchar" MaxLength="30" />
+          <Property Name="StartNumber" Type="int" />
+        </EntityType>
+        <Association Name="FK_CategoriesSubCategories_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="CategoriesSubCategories" Type="Self.CategoriesSubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriesSubCategories">
+              <PropertyRef Name="Category_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriesSubCategories_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+          <End Role="CategoriesSubCategories" Type="Self.CategoriesSubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriesSubCategories">
+              <PropertyRef Name="SubCategory_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Company">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Country_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_Product">
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="Product_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnProduct_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Company_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnProduct_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="ProductType_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Barcode">
+          <End Role="Barcode" Type="Self.Barcode" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barcode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Barcode_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brands">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Brand_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Color_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="CountryofOrgin_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Material_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductType_CategoriesSubCategories">
+          <End Role="CategoriesSubCategories" Type="Self.CategoriesSubCategories" Multiplicity="1" />
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriesSubCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductType">
+              <PropertyRef Name="Categorysubcategoreis_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VanmeModelStoreContainer">
+          <EntitySet Name="Barcode" EntityType="Self.Barcode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoriesSubCategories" EntityType="Self.CategoriesSubCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnProduct" EntityType="Self.OwnProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CategoriesSubCategories_Category" Association="Self.FK_CategoriesSubCategories_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="CategoriesSubCategories" EntitySet="CategoriesSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriesSubCategories_SubCategory" Association="Self.FK_CategoriesSubCategories_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="CategoriesSubCategories" EntitySet="CategoriesSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Company" Association="Self.FK_Company_Company">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_Product" Association="Self.FK_Image_Product">
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnProduct_Company" Association="Self.FK_OwnProduct_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnProduct_ProductType" Association="Self.FK_OwnProduct_ProductType">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Barcode" Association="Self.FK_Product_Barcode">
+            <End Role="Barcode" EntitySet="Barcode" />
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brands" Association="Self.FK_Product_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Color" Association="Self.FK_Product_Color">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Country" Association="Self.FK_Product_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Materials" Association="Self.FK_Product_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="OwnProduct" EntitySet="OwnProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductType_CategoriesSubCategories" Association="Self.FK_ProductType_CategoriesSubCategories">
+            <End Role="CategoriesSubCategories" EntitySet="CategoriesSubCategories" />
+            <End Role="ProductType" EntitySet="ProductType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VanmeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Barcode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="BarcodeNumber" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="OwnProducts" Relationship="Self.FK_Product_Barcode" FromRole="Barcode" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OwnProducts" Relationship="Self.FK_Product_Brands" FromRole="Brands" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="CategoriesSubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Category_Id_fk" Type="Int32" Nullable="false" />
+          <Property Name="SubCategory_Id_fk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_CategoriesSubCategories_Category" FromRole="CategoriesSubCategories" ToRole="Category" />
+          <NavigationProperty Name="SubCategory" Relationship="Self.FK_CategoriesSubCategories_SubCategory" FromRole="CategoriesSubCategories" ToRole="SubCategory" />
+          <NavigationProperty Name="ProductTypes" Relationship="Self.FK_ProductType_CategoriesSubCategories" FromRole="CategoriesSubCategories" ToRole="ProductType" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Sku_code" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="StyleNum_code" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CategoriesSubCategories" Relationship="Self.FK_CategoriesSubCategories_Category" FromRole="Category" ToRole="CategoriesSubCategories" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="PantoneNumber" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OwnProducts" Relationship="Self.FK_Product_Color" FromRole="Color" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Manufacture" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="StreetAddress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="StateProvinceRegion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ZipPostlCode" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Country_Id_fk" Type="Int32" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="FAX" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Company_Company" FromRole="Company" ToRole="Country" />
+          <NavigationProperty Name="OwnProducts" Relationship="Self.FK_OwnProduct_Company" FromRole="Company" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK_Company_Company" FromRole="Country" ToRole="Company" />
+          <NavigationProperty Name="OwnProducts" Relationship="Self.FK_Product_Country" FromRole="Country" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="Product_Id_fk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OwnProduct" Relationship="Self.FK_Image_Product" FromRole="Image" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MaterialName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OwnProducts" Relationship="Self.FK_Product_Materials" FromRole="Materials" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="OwnProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ProductType_Id_fk" Type="Int32" />
+          <Property Name="ProductTittle" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Brand_Id_fk" Type="Int32" />
+          <Property Name="Color_Id_fk" Type="Int32" />
+          <Property Name="Material_Id_fk" Type="Int32" />
+          <Property Name="RFIDProtected" Type="Boolean" />
+          <Property Name="TSAApprovedLock" Type="Boolean" />
+          <Property Name="CheckPointFriendly" Type="Boolean" />
+          <Property Name="Expandable" Type="Boolean" />
+          <Property Name="WaterResistance" Type="Boolean" />
+          <Property Name="RetractableHandle" Type="Boolean" />
+          <Property Name="DescribeMaterial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Single" />
+          <Property Name="Width" Type="Single" />
+          <Property Name="length" Type="Single" />
+          <Property Name="Depth" Type="Single" />
+          <Property Name="Height" Type="Single" />
+          <Property Name="Weight" Type="Single" />
+          <Property Name="Gsm" Type="Int16" />
+          <Property Name="Box" Type="Boolean" />
+          <Property Name="Wrap" Type="Boolean" />
+          <Property Name="NoPackaging" Type="Boolean" />
+          <Property Name="AirTransportation" Type="Boolean" />
+          <Property Name="ShipTransportation" Type="Boolean" />
+          <Property Name="Train" Type="Boolean" />
+          <Property Name="Truck" Type="Boolean" />
+          <Property Name="Company_Id_fk" Type="Int32" />
+          <Property Name="CountryofOrgin_Id_fk" Type="Int32" />
+          <Property Name="Barcode_Id_fk" Type="Int32" />
+          <Property Name="Bag" Type="Boolean" />
+          <Property Name="SpecialPackingInstructions" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sku" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="StyleNumber" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Barcode" Relationship="Self.FK_Product_Barcode" FromRole="OwnProduct" ToRole="Barcode" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK_Product_Brands" FromRole="OwnProduct" ToRole="Brands" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_Product_Color" FromRole="OwnProduct" ToRole="Color" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_OwnProduct_Company" FromRole="OwnProduct" ToRole="Company" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Product_Country" FromRole="OwnProduct" ToRole="Country" />
+          <NavigationProperty Name="Images" Relationship="Self.FK_Image_Product" FromRole="OwnProduct" ToRole="Image" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_Product_Materials" FromRole="OwnProduct" ToRole="Materials" />
+          <NavigationProperty Name="ProductType" Relationship="Self.FK_OwnProduct_ProductType" FromRole="OwnProduct" ToRole="ProductType" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Categorysubcategoreis_Id_fk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoriesSubCategory" Relationship="Self.FK_ProductType_CategoriesSubCategories" FromRole="ProductType" ToRole="CategoriesSubCategories" />
+          <NavigationProperty Name="OwnProducts" Relationship="Self.FK_OwnProduct_ProductType" FromRole="ProductType" ToRole="OwnProduct" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CategoriesSubCategories" Relationship="Self.FK_CategoriesSubCategories_SubCategory" FromRole="SubCategory" ToRole="CategoriesSubCategories" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Pass" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MacAdress" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="StartNumber" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Product_Barcode">
+          <End Role="Barcode" Type="Self.Barcode" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barcode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Barcode_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brands">
+          <End Role="Brands" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Brand_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriesSubCategories_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="CategoriesSubCategories" Type="Self.CategoriesSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriesSubCategories">
+              <PropertyRef Name="Category_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoriesSubCategories_SubCategory">
+          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+          <End Role="CategoriesSubCategories" Type="Self.CategoriesSubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CategoriesSubCategories">
+              <PropertyRef Name="SubCategory_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductType_CategoriesSubCategories">
+          <End Role="CategoriesSubCategories" Type="Self.CategoriesSubCategory" Multiplicity="1" />
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriesSubCategories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductType">
+              <PropertyRef Name="Categorysubcategoreis_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Color_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Company_Company">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Country_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnProduct_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Company_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="CountryofOrgin_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Image_Product">
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OwnProduct">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="Product_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Materials">
+          <End Role="Materials" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="Material_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OwnProduct_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+          <End Role="OwnProduct" Type="Self.OwnProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OwnProduct">
+              <PropertyRef Name="ProductType_Id_fk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VanmeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Barcodes" EntityType="Self.Barcode" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="CategoriesSubCategories" EntityType="Self.CategoriesSubCategory" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="OwnProducts" EntityType="Self.OwnProduct" />
+          <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
+          <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Product_Barcode" Association="Self.FK_Product_Barcode">
+            <End Role="Barcode" EntitySet="Barcodes" />
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brands" Association="Self.FK_Product_Brands">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriesSubCategories_Category" Association="Self.FK_CategoriesSubCategories_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="CategoriesSubCategories" EntitySet="CategoriesSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoriesSubCategories_SubCategory" Association="Self.FK_CategoriesSubCategories_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="CategoriesSubCategories" EntitySet="CategoriesSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductType_CategoriesSubCategories" Association="Self.FK_ProductType_CategoriesSubCategories">
+            <End Role="CategoriesSubCategories" EntitySet="CategoriesSubCategories" />
+            <End Role="ProductType" EntitySet="ProductTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Color" Association="Self.FK_Product_Color">
+            <End Role="Color" EntitySet="Colors" />
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Company_Company" Association="Self.FK_Company_Company">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnProduct_Company" Association="Self.FK_OwnProduct_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Country" Association="Self.FK_Product_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Image_Product" Association="Self.FK_Image_Product">
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Materials" Association="Self.FK_Product_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OwnProduct_ProductType" Association="Self.FK_OwnProduct_ProductType">
+            <End Role="ProductType" EntitySet="ProductTypes" />
+            <End Role="OwnProduct" EntitySet="OwnProducts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VanmeModelStoreContainer" CdmEntityContainer="VanmeEntities">
+          <EntitySetMapping Name="Barcodes">
+            <EntityTypeMapping TypeName="VanmeModel.Barcode">
+              <MappingFragment StoreEntitySet="Barcode">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BarcodeNumber" ColumnName="BarcodeNumber" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="VanmeModel.Brand">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoriesSubCategories">
+            <EntityTypeMapping TypeName="VanmeModel.CategoriesSubCategory">
+              <MappingFragment StoreEntitySet="CategoriesSubCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category_Id_fk" ColumnName="Category_Id_fk" />
+                <ScalarProperty Name="SubCategory_Id_fk" ColumnName="SubCategory_Id_fk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="VanmeModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sku_code" ColumnName="Sku_code" />
+                <ScalarProperty Name="StyleNum_code" ColumnName="StyleNum_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="VanmeModel.Color">
+              <MappingFragment StoreEntitySet="Color">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PantoneNumber" ColumnName="PantoneNumber" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="VanmeModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="StreetAddress" ColumnName="StreetAddress" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateProvinceRegion" ColumnName="StateProvinceRegion" />
+                <ScalarProperty Name="ZipPostlCode" ColumnName="ZipPostlCode" />
+                <ScalarProperty Name="Country_Id_fk" ColumnName="Country_Id_fk" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="VanmeModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="VanmeModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="Product_Id_fk" ColumnName="Product_Id_fk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="VanmeModel.Material">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnProducts">
+            <EntityTypeMapping TypeName="VanmeModel.OwnProduct">
+              <MappingFragment StoreEntitySet="OwnProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductType_Id_fk" ColumnName="ProductType_Id_fk" />
+                <ScalarProperty Name="ProductTittle" ColumnName="ProductTittle" />
+                <ScalarProperty Name="Brand_Id_fk" ColumnName="Brand_Id_fk" />
+                <ScalarProperty Name="Color_Id_fk" ColumnName="Color_Id_fk" />
+                <ScalarProperty Name="Material_Id_fk" ColumnName="Material_Id_fk" />
+                <ScalarProperty Name="RFIDProtected" ColumnName="RFIDProtected" />
+                <ScalarProperty Name="TSAApprovedLock" ColumnName="TSAApprovedLock" />
+                <ScalarProperty Name="CheckPointFriendly" ColumnName="CheckPointFriendly" />
+                <ScalarProperty Name="Expandable" ColumnName="Expandable" />
+                <ScalarProperty Name="WaterResistance" ColumnName="WaterResistance" />
+                <ScalarProperty Name="RetractableHandle" ColumnName="RetractableHandle" />
+                <ScalarProperty Name="DescribeMaterial" ColumnName="DescribeMaterial" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Gsm" ColumnName="Gsm" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+                <ScalarProperty Name="Wrap" ColumnName="Wrap" />
+                <ScalarProperty Name="NoPackaging" ColumnName="NoPackaging" />
+                <ScalarProperty Name="AirTransportation" ColumnName="AirTransportation" />
+                <ScalarProperty Name="ShipTransportation" ColumnName="ShipTransportation" />
+                <ScalarProperty Name="Train" ColumnName="Train" />
+                <ScalarProperty Name="Truck" ColumnName="Truck" />
+                <ScalarProperty Name="Company_Id_fk" ColumnName="Company_Id_fk" />
+                <ScalarProperty Name="CountryofOrgin_Id_fk" ColumnName="CountryofOrgin_Id_fk" />
+                <ScalarProperty Name="Barcode_Id_fk" ColumnName="Barcode_Id_fk" />
+                <ScalarProperty Name="Bag" ColumnName="Bag" />
+                <ScalarProperty Name="SpecialPackingInstructions" ColumnName="SpecialPackingInstructions" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="StyleNumber" ColumnName="StyleNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductTypes">
+            <EntityTypeMapping TypeName="VanmeModel.ProductType">
+              <MappingFragment StoreEntitySet="ProductType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Categorysubcategoreis_Id_fk" ColumnName="Categorysubcategoreis_Id_fk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="VanmeModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="VanmeModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="MacAdress" ColumnName="MacAdress" />
+                <ScalarProperty Name="StartNumber" ColumnName="StartNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
