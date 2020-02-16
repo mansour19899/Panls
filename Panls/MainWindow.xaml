@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Panls"
         mc:Ignorable="d"
-        Title="Club Jummana" Height="950" Width="1800" WindowStartupLocation="CenterOwner">
+        Title="Club Jummana" Height="950" Width="1800" WindowStartupLocation="CenterOwner" WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="8 (2).jpg" Stretch="UniformToFill"/>
     </Window.Background>

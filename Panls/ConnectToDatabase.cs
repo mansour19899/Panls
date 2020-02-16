@@ -24,6 +24,21 @@ namespace Panls
             return y;
         }
 
+        public List<OwnProduct> GiveListProductsWithSytyle(string str)
+        {
+            //var x = db.OwnProducts.Where(p => p.StyleNumber.Trim().CompareTo(str.Trim()) == 0).ToList();               
+            var x = db.OwnProducts.Where(p => p.StyleNumber.Trim().Contains(str.Trim())).ToList();               
+
+            return x;
+        }
+
+        public List<OwnProduct> GiveListProductsWithSKU(string str)
+        {
+            var x = db.OwnProducts.Where(p => p.Sku.Trim().Contains(str.Trim())).ToList();
+
+            return x;
+        }
+
         public List<OwnProduct> GiveListProducts()
         {
             var x = db.OwnProducts.ToList();
@@ -32,6 +47,10 @@ namespace Panls
         public List<Company> CompaniesList()
         {
             var x = db.Companies.ToList();
+            foreach (var item in x)
+            {
+                item.CompanyName = item.CompanyName.Trim();
+            }
             return x;
         }
         public List<Category> CategoriesList()
