@@ -22,12 +22,14 @@ namespace Panls
     {
         ConnectToDatabase connect;
         List<OwnProduct> TempList;
+        List<OwnProduct> SelectedList;
+        Boolean SwitchSelectedlist = true;
         public SearchProduct()
         {
             InitializeComponent();
 
              connect = new ConnectToDatabase();
-
+            SelectedList = new List<OwnProduct>();
 
         }
 
@@ -159,8 +161,9 @@ namespace Panls
 
         void SetFilter()
         {
-            
             var t = TempList;
+            if (SwitchSelectedlist==false)
+               t = SelectedList;
             lvProducts.ItemsSource = t;
             if(cmbCategory.SelectedIndex > 0)
             {
@@ -227,6 +230,7 @@ namespace Panls
         private void Label_MouseDoubleClick_3(object sender, MouseButtonEventArgs e)
         {
             cmbCompany.SelectedIndex = 0;
+
         }
 
         private void cmbType_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -254,6 +258,52 @@ namespace Panls
                     MessageBox.Show("Hi");
                     break;
             }
+        }
+
+        private void btnAddToList_Click(object sender, RoutedEventArgs e)
+        {
+            var itemSelected = lvProducts.SelectedItems;
+            if(SwitchSelectedlist)
+            {
+                foreach (var item in itemSelected)
+                {
+                    if (SelectedList.Contains(item) == false)
+                        SelectedList.Add(item as OwnProduct);
+                }
+            }
+            else
+            {
+                foreach (var item in itemSelected)
+                {                    
+                        SelectedList.Remove(item as OwnProduct);
+                }
+                lvProducts.ItemsSource = SelectedList.ToList();
+            }
+
+            lvProducts.SelectedIndex = -1;
+            lblCountSelectedList.Content = "IsSelected : " + SelectedList.Count();
+ 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if(SwitchSelectedlist)
+            {
+                SwitchSelectedlist = false;
+                lvProducts.ItemsSource = SelectedList.ToList();
+                BtnShowSelectedlist.Content = "Show Main List";
+                btnAddToList.Content="Remove to List";
+                SetFilter();
+            }
+            else {
+                SwitchSelectedlist = true;
+                lvProducts.ItemsSource = TempList.ToList();
+                SetFilter();
+                BtnShowSelectedlist.Content = "Show Selected List";
+                btnAddToList.Content = "Add to List";
+
+            }
+            
         }
     }
 }
