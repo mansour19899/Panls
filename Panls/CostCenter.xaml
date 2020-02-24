@@ -1,0 +1,111 @@
+﻿<Window x:Class="Panls.CostCenter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Panls"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
+        Title="CostCenter" Height="848" Width="1400" Loaded="Window_Loaded">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.15*"/>
+                <RowDefinition Height="0.75*"/>
+            </Grid.RowDefinitions>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="Cost Center" FontSize="40" FontWeight="Bold" Foreground="Navy"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="FOB Price   " FontSize="30"/>
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Content="Landed Cost Rate    " FontSize="30"/>
+                <TextBox Style="{StaticResource txtCostCentreStyle}" Name="txtMainPrice" Grid.Row="0" Grid.Column="1" Width="250" KeyDown="txtMainPrice_KeyDown" KeyUp="txtMainPrice_KeyUp" >
+                    <TextBox.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="10" Opacity=".5" Softness="9" />
+                    </TextBox.BitmapEffect>
+                </TextBox>
+                <TextBox Style="{StaticResource txtCostCentreStyle}" Name="txtCostRate" Grid.Row="1" Grid.Column="1" Width="250" KeyDown="txtCostRate_KeyDown" KeyUp="txtCostRate_KeyUp">
+                    <TextBox.BitmapEffect>
+                        <DropShadowBitmapEffect Color="Black" Direction="320" ShadowDepth="10" Opacity=".5" Softness="9" />
+                    </TextBox.BitmapEffect>
+                </TextBox>
+                <StackPanel Margin="10" Grid.Row="1" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <Label Content="%" Style="{StaticResource LableStyle}" FontSize="25" Margin="0 0 20 0"/>
+                    <RadioButton Margin="20 0 0 0" VerticalContentAlignment="Center" Name="rdbChina" FontSize="30" Checked="rdbChina_Checked" >China</RadioButton>
+                    <RadioButton Margin="20 0 0 0" VerticalContentAlignment="Center" Name="rdbBangladesh" IsChecked="True" FontSize="30" Checked="rdbBangladesh_Checked">Bangladesh</RadioButton>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Row="3" Margin="0 0 0 50" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.3*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="USD" FontSize="30"/>
+                <Label Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="CAD" FontSize="30"/>
+                <Label Grid.Row="1" Grid.Column="1" Content=" Landed Cost" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="2" Grid.Column="1" Content=" Wholesale Price" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="3" Grid.Column="1" Content=" Sales Com 5%" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="4" Grid.Column="1" Content=" Credit Insurance 10%" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="5" Grid.Column="1" Content=" Wholesale Cash" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="6" Grid.Column="1" Content=" Wholesale Credit" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="7" Grid.Column="1" Content=" WL Gross Margin" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="8" Grid.Column="1" Content=" WL Margin" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="9" Grid.Column="1" Content=" Retail" Style="{StaticResource lblCostCentreStyle}"  />
+                <Label Grid.Row="10" Grid.Column="1" Content=" RTL Gross Margin" Style="{StaticResource lblCostCentreStyle}"  />
+                <TextBox Name="txtLandedCostUSD" Grid.Row="1" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200" />
+                <TextBox Name="txtWholesaleUSD" Grid.Row="2" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtSales5USD" Grid.Row="3" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtCreditIN10USD" Grid.Row="4" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWholeCashUSD" Grid.Row="5" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWholeCreditUSD" Grid.Row="6" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWLGrossUSD" Grid.Row="7" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWLMarginUSD" Grid.Row="8" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtReatailUSD" Grid.Row="9" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtRTLGrossUSD" Grid.Row="10" Grid.Column="2" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtLandedCostCAD" Grid.Row="1" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200" />
+                <TextBox Name="txtWholesaleCAD" Grid.Row="2" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtSales5CAD" Grid.Row="3" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtCreditIN10CAD" Grid.Row="4" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWholeCashCAD" Grid.Row="5" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWholeCreditCAD" Grid.Row="6" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWLGrossCAD" Grid.Row="7" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtWLMarginCAD" Grid.Row="8" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtReatailCAD" Grid.Row="9" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+                <TextBox Name="txtRTLGrossCAD" Grid.Row="10" Grid.Column="3" Style="{StaticResource txtCostCentreStyle}" Width="200"/>
+            </Grid>
+
+
+
+
+        </Grid>
+    </ScrollViewer>
+   
+</Window>

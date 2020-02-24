@@ -101,6 +101,7 @@ namespace Panls
             lblGsm.Content = "GSM : " + t.Gsm.ToString();
             lblHeader.Content = t.StyleNumber;
             GrSearch.Visibility = Visibility.Hidden;
+            lblDescription.Content = string.Format("{0}",t.DescribeMaterial);
         }
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
@@ -148,7 +149,9 @@ namespace Panls
             OwnProduct item = (OwnProduct)lvProducts.ItemContainerGenerator.ItemFromContainer(dep);
 
             SetInformation(item);
-
+            GrInformation.Visibility = Visibility.Visible;
+            GrDescription.Visibility = Visibility.Hidden;
+            btnDescription.Content = "Description";
 
             int x = 0;
 
@@ -304,6 +307,33 @@ namespace Panls
 
             }
             
+        }
+
+        private void lblPrice_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            CostCenter cost = new CostCenter();
+            cost.Owner = this;
+            cost.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if(btnDescription.Content.ToString().CompareTo("Description")==0)
+            {
+                GrInformation.Visibility = Visibility.Hidden;
+                GrDescription.Visibility = Visibility.Visible;
+                btnDescription.Content = "Information";
+            }
+            else
+            {
+                GrInformation.Visibility = Visibility.Visible;
+                GrDescription.Visibility = Visibility.Hidden;
+                btnDescription.Content = "Description";
+            }
+
+            
+
+
         }
     }
 }

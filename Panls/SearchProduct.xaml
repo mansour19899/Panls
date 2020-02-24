@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Panls"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="SearchProduct" Height="900" Width="1800" WindowState="Maximized">
+        Title="SearchProduct" Height="900" Width="1800" WindowState="Maximized" ShowInTaskbar="False">
     
     <Window.Background>
         <ImageBrush ImageSource="Untitled-3.jpg" Stretch="None"/>
@@ -15,49 +15,81 @@
         <StackPanel Visibility="Visible" Margin="65,36,40,34">
             <StackPanel.Background>
                 <ImageBrush ImageSource="Untitled-3.jpg"/>
-            </StackPanel.Background>
-            <DockPanel >
-                <DockPanel  HorizontalAlignment="Center" DockPanel.Dock="Top" Height="126">
-                    <Label Name="lblHeader" FontSize="40"  VerticalAlignment="Bottom" Foreground="#FF301F68" FontWeight="Bold" MouseLeftButtonDown="lblHeader_MouseLeftButtonDown">Style number: 12.02.008546</Label>
-                </DockPanel>
-
-                <Grid DockPanel.Dock="Bottom" Height="634">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.1*" />
-                        <ColumnDefinition Width="0.4*" />
-                        <ColumnDefinition Width="0.5*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Label Name="lblProductTittle" Style="{StaticResource LableStyle}" Grid.Column="1" Grid.Row="0"  >Product title :</Label>
-                    <Label Name="lblCompany" Grid.Column="1" Grid.Row="1" Style="{StaticResource LableStyle}">Company :</Label>
-                    <Label Name="lblCategory" Grid.Column="1" Grid.Row="2" Style="{StaticResource LableStyle}">Category :</Label>
-                    <Label Name="lblSubCat" Grid.Column="1" Grid.Row="3" Style="{StaticResource LableStyle}">Sub Category :</Label>
-                    <Label Name="lblProductType" Grid.Column="1" Grid.Row="4" Style="{StaticResource LableStyle}">Product type :</Label>
-                    <Label Name="lblBrand" Grid.Column="1" Grid.Row="5" Style="{StaticResource LableStyle}">Brand :</Label>
-                    <Label Name="lblCountryOfOrgin" Grid.Column="1" Grid.Row="6" Style="{StaticResource LableStyle}">Country of Orgin :</Label>
-                    <Label Name="lblColor" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="7" Style="{StaticResource LableStyle}" VerticalAlignment="Top">Color :</Label>
-                    <Label Name="lblMeterial" Grid.Column="2" Grid.Row="6" Style="{StaticResource LableStyle}">Meterial :</Label>
-                    <Label Name="lblSku" Grid.Column="2" Grid.Row="0" Style="{StaticResource LableStyle}">SKU :</Label>
-                    <Label Name="lblStyleNumber" Grid.Column="2" Grid.Row="1" Style="{StaticResource LableStyle}">Style Number :</Label>
-                    <Label Name="lblUPC" Grid.Column="2" Grid.Row="2" Style="{StaticResource LableStyle}">UPC  :</Label>
-                    <Label Name="lblPrice" Grid.Column="2" Grid.Row="3" Style="{StaticResource LableStyle}">Price :</Label>
-                    <Label Name="lblSize" Grid.Column="2" Grid.Row="4" Style="{StaticResource LableStyle}">Size :</Label>
-                    <Label Name="lblGsm" Grid.Column="2" Grid.Row="5" Style="{StaticResource LableStyle}">GSM  :</Label>
-                </Grid>
-            </DockPanel>
+            </StackPanel.Background>           
+            
 
         </StackPanel>
-        <Grid Visibility="Visible" Name="GrSearch" Margin="65,36,40,34">
+        <Grid>
+            <!--<Grid.Background Name="GrDescription" Margin="65,36,40,34">
+                <ImageBrush ImageSource="Untitled-33.jpg"/>
+            </Grid.Background>-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition Height="0.8*" />                
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.4*" />
+                    <ColumnDefinition Width="0.15*" />
+                    <ColumnDefinition Width="0.15*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="2" Name="lblHeader" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#FF301F68" FontWeight="Bold" MouseLeftButtonDown="lblHeader_MouseLeftButtonDown">Style number: 12.02.008546</Label>
+                <Button Name="btnDescription" Grid.Column="1" Margin="0 90 50 10" FontSize="25" Content="Description" Click="Button_Click_2"  >
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.8"/>
+                    </Button.Effect>
+                </Button>
+                <Button Grid.Column="3" Margin="0 90 50 10" FontSize="25" Content="Imeges"  >
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.8"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+            <Grid Name="GrInformation" Grid.Row="1" Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="0.4*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Name="lblProductTittle" Style="{StaticResource LableStyle}" Grid.Column="1" Grid.Row="0"  >Product title :</Label>
+                <Label Name="lblCompany" Grid.Column="1" Grid.Row="1" Style="{StaticResource LableStyle}">Company :</Label>
+                <Label Name="lblCategory" Grid.Column="1" Grid.Row="2" Style="{StaticResource LableStyle}">Category :</Label>
+                <Label Name="lblSubCat" Grid.Column="1" Grid.Row="3" Style="{StaticResource LableStyle}">Sub Category :</Label>
+                <Label Name="lblProductType" Grid.Column="1" Grid.Row="4" Style="{StaticResource LableStyle}">Product type :</Label>
+                <Label Name="lblBrand" Grid.Column="1" Grid.Row="5" Style="{StaticResource LableStyle}">Brand :</Label>
+                <Label Name="lblCountryOfOrgin" Grid.Column="1" Grid.Row="6" Style="{StaticResource LableStyle}">Country of Orgin :</Label>
+                <Label Name="lblColor" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="7" Style="{StaticResource LableStyle}" VerticalAlignment="Top">Color :</Label>
+                <Label Name="lblMeterial" Grid.Column="2" Grid.Row="6" Style="{StaticResource LableStyle}">Meterial :</Label>
+                <Label Name="lblSku" Grid.Column="2" Grid.Row="0" Style="{StaticResource LableStyle}">SKU :</Label>
+                <Label Name="lblStyleNumber" Grid.Column="2" Grid.Row="1" Style="{StaticResource LableStyle}">Style Number :</Label>
+                <Label Name="lblUPC" Grid.Column="2" Grid.Row="2" Style="{StaticResource LableStyle}">UPC  :</Label>
+                <Label Name="lblPrice" Grid.Column="2" Grid.Row="3" Style="{StaticResource LableStyle}" MouseLeftButtonUp="lblPrice_MouseLeftButtonUp">Price :</Label>
+                <Label Name="lblSize" Grid.Column="2" Grid.Row="4" Style="{StaticResource LableStyle}">Size :</Label>
+                <Label Name="lblGsm" Grid.Column="2" Grid.Row="5" Style="{StaticResource LableStyle}">GSM  :</Label>
+            </Grid>
+            <Grid Name="GrDescription" Visibility="Hidden" Grid.Row="1" Margin="0 30 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition  Width="0.4*" />
+                    <ColumnDefinition  Width="0.5*" />                    
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="1" Name="lblDescription" Content="salam"  HorizontalAlignment="Left" VerticalAlignment="Top"  Style="{StaticResource LableStyle}"/>
+            </Grid>
+        </Grid>
+        <Grid Visibility="Hidden" Name="GrSearch" Margin="65,36,40,34">
             <Grid.Background>
                 <ImageBrush ImageSource="Untitled-33.jpg"/>
             </Grid.Background>
