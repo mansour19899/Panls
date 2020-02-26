@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Title="SearchProduct" Height="900" Width="1800" WindowState="Maximized" ShowInTaskbar="False">
-    
+
     <Window.Background>
         <ImageBrush ImageSource="Untitled-3.jpg" Stretch="None"/>
     </Window.Background>
@@ -15,8 +15,8 @@
         <StackPanel Visibility="Visible" Margin="65,36,40,34">
             <StackPanel.Background>
                 <ImageBrush ImageSource="Untitled-3.jpg"/>
-            </StackPanel.Background>           
-            
+            </StackPanel.Background>
+
 
         </StackPanel>
         <Grid>
@@ -25,7 +25,7 @@
             </Grid.Background>-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.2*" />
-                <RowDefinition Height="0.8*" />                
+                <RowDefinition Height="0.8*" />
             </Grid.RowDefinitions>
             <Grid  Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -35,13 +35,13 @@
                     <ColumnDefinition Width="0.15*" />
                     <ColumnDefinition Width="0.15*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="2" Name="lblHeader" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Bottom" Foreground="#FF301F68" FontWeight="Bold" MouseLeftButtonDown="lblHeader_MouseLeftButtonDown">Style number: 12.02.008546</Label>
-                <Button Name="btnDescription" Grid.Column="1" Margin="0 90 50 10" FontSize="25" Content="Description" Click="Button_Click_2"  >
+                <Label Grid.Column="2" Name="lblHeader" FontSize="40" Margin="200 110 50 10"  Foreground="#FF301F68" FontWeight="Bold" MouseLeftButtonDown="lblHeader_MouseLeftButtonDown">Style number: 12.02.008546</Label>
+                <Button Name="btnDescription" Grid.Column="1" Style="{StaticResource btnProductInformation}"  Content="Description" Click="Button_Click_2"  >
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.8"/>
                     </Button.Effect>
                 </Button>
-                <Button Grid.Column="3" Margin="0 90 50 10" FontSize="25" Content="Imeges"  >
+                <Button Name="btnImages" Grid.Column="3" Style="{StaticResource btnProductInformation}"  Content="Imeges" Click="btnImages_Click"  >
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.8"/>
                     </Button.Effect>
@@ -84,12 +84,49 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.1*" />
                     <ColumnDefinition  Width="0.4*" />
-                    <ColumnDefinition  Width="0.5*" />                    
+                    <ColumnDefinition  Width="0.5*" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="1" Name="lblDescription" Content="salam"  HorizontalAlignment="Left" VerticalAlignment="Top"  Style="{StaticResource LableStyle}"/>
             </Grid>
+            <Grid Name="GrImagees" Visibility="Hidden" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.4*" />
+                    <ColumnDefinition Width="0.05*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="0.3*" />
+                    </Grid.RowDefinitions>
+                    <Image  Name="imgMain" Source="7.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0.4,0.2" />
+                    <Button Name="btnAddImage" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Add Image" FontSize="30" Padding="20" Click="btnAddImage_Click" Grid.Column="1" Margin="302,10,351,0" Grid.Row="1"/>
+
+                </Grid>
+                <UniformGrid Grid.Column="2" Columns="3" Rows="5">
+                    <Image  Name="img1" MouseEnter="img1_MouseEnter"/>
+                    <Image Name="img2" MouseEnter="img2_MouseEnter" />
+                    <Image Name="img3" MouseEnter="img3_MouseEnter" />
+                    <Image Name="img4" MouseEnter="img4_MouseEnter" />
+                    <Image Name="img5" MouseEnter="img5_MouseEnter" />
+                    <Image Name="img6" MouseEnter="img6_MouseEnter" />
+                    <Image Name="img7" MouseEnter="img7_MouseEnter" />
+                    <Image Name="img8" MouseEnter="img8_MouseEnter" />
+                    <Image Name="img9" MouseEnter="img9_MouseEnter" />
+                    <Image Name="img10" MouseEnter="img10_MouseEnter"/>
+                    <Image Name="img11" MouseEnter="img11_MouseEnter"/>
+                    <Image Name="img12" MouseEnter="img12_MouseEnter"/>
+
+                </UniformGrid>
+
+            </Grid>
         </Grid>
-        <Grid Visibility="Hidden" Name="GrSearch" Margin="65,36,40,34">
+        <Grid Visibility="Visible" Name="GrSearch" Margin="65,36,40,34">
             <Grid.Background>
                 <ImageBrush ImageSource="Untitled-33.jpg"/>
             </Grid.Background>
@@ -112,7 +149,7 @@
                 <TextBox x:Name="txtSearch" Margin="10" Grid.Column="2" FontSize="36" KeyDown="TextBox_KeyDown"/>
                 <ComboBox Name="cmbType" DisplayMemberPath="Name" SelectedValuePath="Id" Padding="10" Margin="10" FontSize="24" Grid.Column="3" BorderBrush="#FF1BAC2F" Foreground="Black" FontWeight="Medium" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" SelectionChanged="cmbType_SelectionChanged">
                 </ComboBox>
-                <Button Name="BtnShowSelectedlist" Grid.Column="4" Margin="10 10 100 10" FontSize="25" Click="Button_Click_1"> Show List Selected</Button>
+                <Button Name="BtnShowSelectedlist" Grid.Column="4" Margin="10 10 100 10" FontSize="25" Click="Button_Click_1">Show List Selected</Button>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -145,7 +182,7 @@
                     <Label FontSize="20"></Label>
                     <Label Name="lblCountResult" FontSize="20">Company :</Label>
                     <Label Name="lblCountSelectedList" FontSize="20"></Label>
-                    
+
                 </StackPanel>
             </Grid>
             <ListView SelectionMode="Multiple" Name="lvProducts" Grid.Row="3" Margin="70 10 70 20" FontSize="20" MouseDoubleClick="lvProducts_MouseDoubleClick">
@@ -160,11 +197,11 @@
                             <Label  Content="       "  />
                             <Label  Content="{Binding ProductType.Name}"  />
                         </StackPanel>
-                        
-                    </DataTemplate> 
+
+                    </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </Grid>  
+        </Grid>
 
     </Grid>
 

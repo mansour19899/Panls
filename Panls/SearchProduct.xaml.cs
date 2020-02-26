@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Panls
         ConnectToDatabase connect;
         List<OwnProduct> TempList;
         List<OwnProduct> SelectedList;
+        OwnProduct SelectedProduct;
+        List<string> UploadedPicturs;
+
+
+
         Boolean SwitchSelectedlist = true;
         public SearchProduct()
         {
@@ -30,7 +36,96 @@ namespace Panls
 
              connect = new ConnectToDatabase();
             SelectedList = new List<OwnProduct>();
+            UploadedPicturs = new List<string>();
 
+            //Imageis = new List<Image>() {img2 };
+            //List<ImageSource> Imageis = new List<ImageSource>();
+            //Imageis.Add(img3.Source);
+            //ImageSource imageSource = new BitmapImage(new Uri("D:\\Product-image\\2020131392.jpg"));
+            //img4.Source = imageSource;            
+
+        }
+        public void UploadPictures()
+        {
+            if(UploadedPicturs.Count>0)
+            {
+                img1.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(0)));
+            }
+            if (UploadedPicturs.Count > 1)
+            {
+                img2.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(1)));
+            }
+            if (UploadedPicturs.Count > 2)
+            {
+                img3.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(2)));
+            }
+            if (UploadedPicturs.Count > 3)
+            {
+                img4.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(3)));
+            }
+            if (UploadedPicturs.Count > 4)
+            {
+                img5.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(4)));
+            }
+            if (UploadedPicturs.Count > 5)
+            {
+                img6.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(5)));
+            }
+            if (UploadedPicturs.Count > 6)
+            {
+                img7.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(6)));
+            }
+            if (UploadedPicturs.Count > 7)
+            {
+                img8.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(7)));
+            }
+            if (UploadedPicturs.Count > 8)
+            {
+                img9.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(8)));
+            }
+            if (UploadedPicturs.Count > 9)
+            {
+                img10.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(9)));
+            }
+            if (UploadedPicturs.Count > 10)
+            {
+                img11.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(10)));
+            }
+            if (UploadedPicturs.Count > 11)
+            {
+                img12.Source = new BitmapImage(new Uri(UploadedPicturs.ElementAt(11)));
+            }
+        }
+        private void ClearImages()
+        {
+            imgMain.Source = null;
+            img1.Source = null;
+            img2.Source = null;
+            img3.Source = null;
+            img4.Source = null;
+            img5.Source = null;
+            img6.Source = null;
+            img7.Source = null;
+            img8.Source = null;
+            img9.Source = null;
+            img10.Source = null;
+            img11.Source = null;
+            img12.Source = null;
+        }
+        public void FindPictureProduct(int Id)
+        {
+            UploadedPicturs.Clear();
+            ClearImages();
+            var y = connect.GiveImagesOfProduct(Id);
+            string x = ManageFileFolder.destinationFolder;
+            if(y.Count()!=0)
+            {
+                foreach (var item in y)
+                {
+                    UploadedPicturs.Add(x+"\\"+item);
+                }
+            }
+            UploadPictures();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -146,12 +241,15 @@ namespace Panls
             if (dep == null)
                 return;
 
-            OwnProduct item = (OwnProduct)lvProducts.ItemContainerGenerator.ItemFromContainer(dep);
+            SelectedProduct = (OwnProduct)lvProducts.ItemContainerGenerator.ItemFromContainer(dep);
 
-            SetInformation(item);
+            SetInformation(SelectedProduct);
+            FindPictureProduct(SelectedProduct.Id);
             GrInformation.Visibility = Visibility.Visible;
             GrDescription.Visibility = Visibility.Hidden;
+            GrImagees.Visibility= Visibility.Hidden;
             btnDescription.Content = "Description";
+            btnImages.Content = "Images";
 
             int x = 0;
 
@@ -321,8 +419,10 @@ namespace Panls
             if(btnDescription.Content.ToString().CompareTo("Description")==0)
             {
                 GrInformation.Visibility = Visibility.Hidden;
+                GrImagees.Visibility = Visibility.Hidden;
                 GrDescription.Visibility = Visibility.Visible;
                 btnDescription.Content = "Information";
+                btnImages.Content = "Images";
             }
             else
             {
@@ -330,10 +430,128 @@ namespace Panls
                 GrDescription.Visibility = Visibility.Hidden;
                 btnDescription.Content = "Description";
             }
+        }
 
+        private void btnImages_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnImages.Content.ToString().CompareTo("Images") == 0)
+            {
+                GrInformation.Visibility = Visibility.Hidden;
+                GrDescription.Visibility = Visibility.Hidden;
+                GrImagees.Visibility = Visibility.Visible;
+                btnImages.Content = "Information";
+                btnDescription.Content= "Description";
+            }
+            else
+            {
+                GrInformation.Visibility = Visibility.Visible;
+                GrImagees.Visibility = Visibility.Hidden;
+                btnImages.Content = "Images";
+            }
+        }
+
+        private void btnAddImage_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+
+
+
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                // Open document 
+                string filename = dlg.FileName;
+                    ManageFileFolder ff = new ManageFileFolder();
+                    string pic = ff.copy(filename);
+                 UploadedPicturs.Add(pic);
+                imgMain.Source = new BitmapImage(new Uri(pic));
+                var yt = pic.Split('\\').Last();
+                if(connect.AddImage(SelectedProduct.Id,yt))
+                 UploadPictures();
+                //MessageBox.Show("pic added");
+                
+            }
+
+
+            //OpenFileDialog open = new OpenFileDialog();
+            //// image filters  
+            //open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            //if (open.ShowDialog() == MessageBoxResult.OK)
+            //{
+            //    // display image in picture box  
+            //    ImageSource imageSource = new BitmapImage(new Uri("D:\\Product-image\\2020131392.jpg"));
+            //    img4.Source = imageSource;
+            //    // image file path  
+            //    //MessageBox.Show(open.FileName);
+            //    ManageFileFolder ff = new ManageFileFolder();
+            //    string pic = ff.copy(open.FileName);
+            //    UploadedPicturs.Add(pic);
+            //    uploadpic();
+            int x = 0;
             
+        }
 
+        private void img1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img1.Source;
+        }
 
+        private void img2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img2.Source;
+        }
+
+        private void img3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img3.Source;
+        }
+
+        private void img4_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img4.Source;
+        }
+
+        private void img5_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img5.Source;
+        }
+
+        private void img6_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img6.Source;
+        }
+
+        private void img7_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img7.Source;
+        }
+
+        private void img8_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img8.Source;
+        }
+
+        private void img9_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img9.Source;
+        }
+
+        private void img10_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img10.Source;
+        }
+
+        private void img11_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img11.Source;
+        }
+
+        private void img12_MouseEnter(object sender, MouseEventArgs e)
+        {
+            imgMain.Source = img12.Source;
         }
     }
 }

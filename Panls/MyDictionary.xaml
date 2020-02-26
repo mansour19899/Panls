@@ -19,6 +19,11 @@
         <Setter Property="Padding" Value="5" />
         <Setter Property="Margin" Value="5" />
     </Style>
-  
+    <Style x:Key="btnProductInformation" TargetType="Button" >
+        <Setter Property="MaxHeight" Value="50" />
+        <Setter Property="Margin" Value="0 90 50 10" />
+        <Setter Property="FontSize" Value="25" />
+
+    </Style>
 
 </ResourceDictionary>

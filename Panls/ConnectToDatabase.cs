@@ -3,18 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.NetworkInformation;
+
 
 namespace Panls
 {
     class ConnectToDatabase
     {
-        VanmeEntities db;
+        VanmeEntities1 db;
+        
+        int StartId = 0;
+        int EndId = 0;
 
         public ConnectToDatabase()
         {
-            db = new VanmeEntities();
+            db = new VanmeEntities1();
+            SetStartId();
 
         }
+        public void SetStartId()
+        {
+          string  mac = GetMACAddress().ToString();
+            StartId = Convert.ToInt16(db.Users.FirstOrDefault(p => p.MacAdress == mac).StartNumber);
+             EndId = StartId + 10000;
+        }
+        public string GetMACAddress()
+        {
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            String sMacAddress = string.Empty;
+            foreach (NetworkInterface adapter in nics)
+            {
+                if (sMacAddress == String.Empty)// only return MAC Address from first card
+                {
+                    IPInterfaceProperties properties = adapter.GetIPProperties();
+                    sMacAddress = adapter.GetPhysicalAddress().ToString();
+                }
+            }
+            return sMacAddress;
+        }
+
         public OwnProduct GiveMeProduct(string str)
         {
             var x = db.OwnProducts.Where(p => p.Sku.CompareTo(str) == 0).FirstOrDefault();
@@ -79,6 +106,31 @@ namespace Panls
                 item.Name = item.Name.Trim();
             }
             return x;
+        }
+        public bool AddImage(int ProductId,string str)
+        {
+            var CreatImageId = db.Images.ToList().LastOrDefault(p => p.Id > StartId && p.Id < EndId);
+            int newImageId = StartId + 1;
+            if(CreatImageId !=null)
+            {
+                newImageId = CreatImageId.Id + 1;
+            }
+
+            Image t = new Image() {Id=newImageId, Product_Id_fk = ProductId, ImageName = str };
+           
+            var d = db.Companies.FirstOrDefault();            
+            db.Images.Add(t);
+            var r = db.SaveChanges();
+            if (r > 0)
+                return true;
+            else
+                return false;
+
+        }
+        public List<string> GiveImagesOfProduct(int Id)
+        {
+            var list = db.Images.Where(p => p.Product_Id_fk == Id).Select(p=>p.ImageName.Trim()).Take(6).ToList();
+            return list;
         }
     }
 }

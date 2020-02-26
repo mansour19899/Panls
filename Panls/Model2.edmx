@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="VanmeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VanmeModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Barcode">
           <Key>
             <PropertyRef Name="Id" />
@@ -76,8 +76,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ImageName" Type="nchar" MaxLength="16" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ImageName" Type="nchar" MaxLength="25" />
           <Property Name="Product_Id_fk" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materials">
@@ -297,7 +297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VanmeModelStoreContainer">
+        <EntityContainer Name="VanmeModel1StoreContainer">
           <EntitySet Name="Barcode" EntityType="Self.Barcode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoriesSubCategories" EntityType="Self.CategoriesSubCategories" Schema="dbo" store:Type="Tables" />
@@ -363,7 +363,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="VanmeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="VanmeModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Barcode">
           <Key>
             <PropertyRef Name="Id" />
@@ -446,8 +446,8 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImageName" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
           <Property Name="Product_Id_fk" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OwnProduct" Relationship="Self.FK_Image_Product" FromRole="Image" ToRole="OwnProduct" />
         </EntityType>
@@ -680,7 +680,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VanmeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VanmeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Barcodes" EntityType="Self.Barcode" />
           <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="CategoriesSubCategories" EntityType="Self.CategoriesSubCategory" />
@@ -748,9 +748,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VanmeModelStoreContainer" CdmEntityContainer="VanmeEntities">
+        <EntityContainerMapping StorageEntityContainer="VanmeModel1StoreContainer" CdmEntityContainer="VanmeEntities1">
           <EntitySetMapping Name="Barcodes">
-            <EntityTypeMapping TypeName="VanmeModel.Barcode">
+            <EntityTypeMapping TypeName="VanmeModel1.Barcode">
               <MappingFragment StoreEntitySet="Barcode">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="BarcodeNumber" ColumnName="BarcodeNumber" />
@@ -759,7 +759,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Brands">
-            <EntityTypeMapping TypeName="VanmeModel.Brand">
+            <EntityTypeMapping TypeName="VanmeModel1.Brand">
               <MappingFragment StoreEntitySet="Brands">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -767,7 +767,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CategoriesSubCategories">
-            <EntityTypeMapping TypeName="VanmeModel.CategoriesSubCategory">
+            <EntityTypeMapping TypeName="VanmeModel1.CategoriesSubCategory">
               <MappingFragment StoreEntitySet="CategoriesSubCategories">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Category_Id_fk" ColumnName="Category_Id_fk" />
@@ -776,7 +776,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="VanmeModel.Category">
+            <EntityTypeMapping TypeName="VanmeModel1.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -786,7 +786,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Colors">
-            <EntityTypeMapping TypeName="VanmeModel.Color">
+            <EntityTypeMapping TypeName="VanmeModel1.Color">
               <MappingFragment StoreEntitySet="Color">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -796,7 +796,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Companies">
-            <EntityTypeMapping TypeName="VanmeModel.Company">
+            <EntityTypeMapping TypeName="VanmeModel1.Company">
               <MappingFragment StoreEntitySet="Company">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
@@ -815,7 +815,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="VanmeModel.Country">
+            <EntityTypeMapping TypeName="VanmeModel1.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -824,7 +824,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Images">
-            <EntityTypeMapping TypeName="VanmeModel.Image">
+            <EntityTypeMapping TypeName="VanmeModel1.Image">
               <MappingFragment StoreEntitySet="Image">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ImageName" ColumnName="ImageName" />
@@ -833,7 +833,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Materials">
-            <EntityTypeMapping TypeName="VanmeModel.Material">
+            <EntityTypeMapping TypeName="VanmeModel1.Material">
               <MappingFragment StoreEntitySet="Materials">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
@@ -841,7 +841,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OwnProducts">
-            <EntityTypeMapping TypeName="VanmeModel.OwnProduct">
+            <EntityTypeMapping TypeName="VanmeModel1.OwnProduct">
               <MappingFragment StoreEntitySet="OwnProduct">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductType_Id_fk" ColumnName="ProductType_Id_fk" />
@@ -881,7 +881,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductTypes">
-            <EntityTypeMapping TypeName="VanmeModel.ProductType">
+            <EntityTypeMapping TypeName="VanmeModel1.ProductType">
               <MappingFragment StoreEntitySet="ProductType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -891,7 +891,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SubCategories">
-            <EntityTypeMapping TypeName="VanmeModel.SubCategory">
+            <EntityTypeMapping TypeName="VanmeModel1.SubCategory">
               <MappingFragment StoreEntitySet="SubCategory">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -900,7 +900,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="VanmeModel.User">
+            <EntityTypeMapping TypeName="VanmeModel1.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
