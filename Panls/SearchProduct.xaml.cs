@@ -255,7 +255,7 @@ namespace Panls
         private void  ShowProduct(OwnProduct ownProduct)
         {
             SetInformation(ownProduct);
-           // FindPictureProduct(SelectedProduct.Id);
+            FindPictureProduct(ownProduct.Id);
             GrInformation.Visibility = Visibility.Visible;
             GrDescription.Visibility = Visibility.Hidden;
             GrImagees.Visibility = Visibility.Hidden;
