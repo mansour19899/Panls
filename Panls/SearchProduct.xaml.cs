@@ -26,6 +26,8 @@ namespace Panls
         List<OwnProduct> SelectedList;
         OwnProduct SelectedProduct;
         List<string> UploadedPicturs;
+        StringBuilder TempBarcode;
+        bool AllowScanBarcodeCon = false;
 
 
 
@@ -37,7 +39,7 @@ namespace Panls
              connect = new ConnectToDatabase();
             SelectedList = new List<OwnProduct>();
             UploadedPicturs = new List<string>();
-
+            TempBarcode = new StringBuilder();
             //Imageis = new List<Image>() {img2 };
             //List<ImageSource> Imageis = new List<ImageSource>();
             //Imageis.Add(img3.Source);
@@ -217,7 +219,7 @@ namespace Panls
                         break;
                     case "3":
                         lvProducts.ItemsSource = connect.GiveProductWithBarcode(txtSearch.Text);
-                        ShowProduct(connect.GiveProductWithBarcode1(txtSearch.Text));
+                        //ShowProduct(connect.GiveProductWithBarcode1(txtSearch.Text));
                         txtSearch.Clear();
                         break;
                     case "4":
@@ -346,7 +348,7 @@ namespace Panls
         private void cmbType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var x =Convert.ToInt16( cmbType.SelectedValue);
-
+            AllowScanBarcodeCon = false;
             switch (x)
             {
                 case 1:
@@ -360,6 +362,7 @@ namespace Panls
                     break;
                 case 3:
                     txtSearch.Clear();
+                    AllowScanBarcodeCon = true;
                     break;
                 case 4:
                     MessageBox.Show("salam");
@@ -562,6 +565,31 @@ namespace Panls
         private void img12_MouseEnter(object sender, MouseEventArgs e)
         {
             imgMain.Source = img12.Source;
+        }
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {   if(AllowScanBarcodeCon)
+            {
+                if (e.Key == Key.Enter)
+                {
+                    var productt = connect.GiveProductWithBarcode1(TempBarcode.ToString());
+                    if(productt==null)
+                    {
+                        MessageBox.Show("Not Exist");
+                    }
+                    else
+                        ShowProduct(productt);
+
+                    TempBarcode.Clear();
+                    txtSearch.Clear();
+                }
+                else
+                {
+                    TempBarcode.Append(e.Key.ToString().ElementAt(1));
+                }
+            }
+
+
         }
     }
 }
