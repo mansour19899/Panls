@@ -144,8 +144,9 @@ namespace Panls
             cmbType.ItemsSource = new[]{
                 new { Id = 1, Name = "---------" },
                 new { Id = 2, Name = "Style Number" },
-                new { Id = 3, Name = "SKU" },
-                new { Id = 4, Name = "Tittle" }
+                new { Id = 3, Name = "Barcode" },
+                new { Id = 4, Name = "SKU" },
+                new { Id = 5, Name = "Tittle" }
             }.ToList();
 
             cmbType.SelectedIndex = 0;
@@ -215,10 +216,12 @@ namespace Panls
                         lvProducts.ItemsSource = connect.GiveListProductsWithSytyle(txtSearch.Text);
                         break;
                     case "3":
-                        lvProducts.ItemsSource = connect.GiveListProductsWithSKU(txtSearch.Text);
+                        lvProducts.ItemsSource = connect.GiveProductWithBarcode(txtSearch.Text);
+                        ShowProduct(connect.GiveProductWithBarcode1(txtSearch.Text));
+                        txtSearch.Clear();
                         break;
                     case "4":
-                        MessageBox.Show("salam");
+                        lvProducts.ItemsSource = connect.GiveListProductsWithSKU(txtSearch.Text);
                         break;
                     default:
                         MessageBox.Show("Hi");
@@ -243,21 +246,27 @@ namespace Panls
 
             SelectedProduct = (OwnProduct)lvProducts.ItemContainerGenerator.ItemFromContainer(dep);
 
-            SetInformation(SelectedProduct);
-            FindPictureProduct(SelectedProduct.Id);
+            ShowProduct(SelectedProduct);
+
+
+
+        }
+
+        private void  ShowProduct(OwnProduct ownProduct)
+        {
+            SetInformation(ownProduct);
+           // FindPictureProduct(SelectedProduct.Id);
             GrInformation.Visibility = Visibility.Visible;
             GrDescription.Visibility = Visibility.Hidden;
-            GrImagees.Visibility= Visibility.Hidden;
+            GrImagees.Visibility = Visibility.Hidden;
             btnDescription.Content = "Description";
             btnImages.Content = "Images";
-
-            int x = 0;
-
         }
 
         private void lblHeader_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             GrSearch.Visibility = Visibility.Visible;
+            txtSearch.Focus();
         }
 
         void SetFilter()
@@ -350,7 +359,7 @@ namespace Panls
                     //lvProducts.ItemsSource = connect.GiveListProductsWithSytyle(txtSearch.Text);
                     break;
                 case 3:
-                    //lvProducts.ItemsSource = connect.GiveListProductsWithSKU(txtSearch.Text);
+                    txtSearch.Clear();
                     break;
                 case 4:
                     MessageBox.Show("salam");
@@ -359,6 +368,7 @@ namespace Panls
                     MessageBox.Show("Hi");
                     break;
             }
+            txtSearch.Focus();
         }
 
         private void btnAddToList_Click(object sender, RoutedEventArgs e)
@@ -409,7 +419,7 @@ namespace Panls
 
         private void lblPrice_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            CostCenter cost = new CostCenter();
+            CostCenter cost = new CostCenter(lblPrice.Content.ToString());
             cost.Owner = this;
             cost.Show();
         }

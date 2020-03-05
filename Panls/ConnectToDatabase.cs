@@ -65,6 +65,18 @@ namespace Panls
 
             return x;
         }
+        public List<OwnProduct> GiveProductWithBarcode(string str)
+        {
+            var x = db.OwnProducts.Where(p => p.Barcode.BarcodeNumber.Trim().CompareTo(str)==0).ToList();
+
+            return x;
+        }
+        public OwnProduct GiveProductWithBarcode1(string str)
+        {
+            var x = db.OwnProducts.Where(p => p.Barcode.BarcodeNumber.Trim().CompareTo(str) == 0).FirstOrDefault();
+
+            return x;
+        }
 
         public List<OwnProduct> GiveListProducts()
         {

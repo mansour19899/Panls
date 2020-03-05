@@ -30,22 +30,25 @@ namespace Panls
         double WLMargin = 0;
         double Retail = 0;
         double RTLGrossMargin = 0;
-        double USDtoCAD = 0;
+        double USDtoCAD = 1.38;
         double LandedCostRate = 15;
         public CostCenter()
         {
             InitializeComponent();
         }
-        public CostCenter(double price)
+        public CostCenter(string price)
         {
             InitializeComponent();
-            MainPrice = price;
+            MainPrice =Convert.ToDouble( price.Split(':')[1]);
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             USDtoCAD = 1.38;
             txtCostRate.Text = "15";
+            txtMainPrice.Text = MainPrice.ToString();
+            CalculateAndUpdatetxt();
 
         }
         public void CalculatePrice()
@@ -98,8 +101,9 @@ namespace Panls
         public bool SetNumeric(object sender, KeyEventArgs e,TextBox txt)
         {
             bool result = false;
+            var tr = (sender as TextBox).Text.IndexOf('.');
 
-            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key == Key.Back))
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key == Key.Back) || (e.Key == Key.Decimal))
             { result= false; }
             else if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key == Key.OemPeriod))
             { result= false; }
@@ -109,6 +113,10 @@ namespace Panls
             if (e.Key == Key.OemPeriod && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 result= true;
+            }
+            if (e.Key == Key.Decimal && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                result = true;
             }
             var count = txt.Text.Split('.');
             if (count.Count() > 1)
@@ -135,7 +143,11 @@ namespace Panls
 
         private void txtMainPrice_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtMainPrice.Text != "")
+            if(txtMainPrice.Text.CompareTo(".")==0)
+            {
+                MainPrice = 0;
+            }
+           else if (txtMainPrice.Text != "")
                 MainPrice = Convert.ToDouble(txtMainPrice.Text);
             else
                 MainPrice = 0;
