@@ -258,15 +258,19 @@ namespace Panls
         {
             SetInformation(ownProduct);
             FindPictureProduct(ownProduct.Id);
-            GrInformation.Visibility = Visibility.Visible;
             GrDescription.Visibility = Visibility.Hidden;
             GrImagees.Visibility = Visibility.Hidden;
+            GrSearch.Visibility = Visibility.Hidden;
+            GrTotalInformation.Visibility = Visibility.Visible;
+            GrInformation.Visibility = Visibility.Visible;
+
             btnDescription.Content = "Description";
             btnImages.Content = "Images";
         }
 
         private void lblHeader_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            GrTotalInformation.Visibility = Visibility.Hidden;
             GrSearch.Visibility = Visibility.Visible;
             txtSearch.Focus();
         }

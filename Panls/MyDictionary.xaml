@@ -25,5 +25,13 @@
         <Setter Property="FontSize" Value="25" />
 
     </Style>
+    <Style x:Key="cmbFilter" TargetType="ComboBox" >
+        <Setter Property="Background" Value="White" />
+        <Setter Property="OpacityMask" Value="White" />
+        <Setter Property="BorderBrush" Value="#FF154F10" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Margin" Value="0 0 20 10" />
+    </Style>
 
 </ResourceDictionary>

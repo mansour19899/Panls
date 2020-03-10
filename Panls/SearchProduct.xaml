@@ -12,22 +12,27 @@
         <ImageBrush ImageSource="Untitled-3.jpg" Stretch="None"/>
     </Window.Background>
     <Grid>
-        <StackPanel Visibility="Visible" Margin="65,36,40,34">
-            <StackPanel.Background>
-                <ImageBrush ImageSource="Untitled-3.jpg"/>
-            </StackPanel.Background>
+        <Rectangle Fill="#030D21" Margin="20" RadiusY="50" RadiusX="50" />
+        <Rectangle Margin="40" RadiusY="30" RadiusX="30" >
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFCC201" Offset="0"/>
+                    <GradientStop Color="#FFEEB609" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Fill="#030D21" Margin="50" RadiusY="20" RadiusX="20" />
+        <Rectangle Fill="White" Margin="60" RadiusY="10" RadiusX="10" />
 
+        <StackPanel Visibility="Visible" Margin="65,36,40,34">
 
         </StackPanel>
-        <Grid>
-            <!--<Grid.Background Name="GrDescription" Margin="65,36,40,34">
-                <ImageBrush ImageSource="Untitled-33.jpg"/>
-            </Grid.Background>-->
+        <Grid Name="GrTotalInformation" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.2*" />
                 <RowDefinition Height="0.8*" />
             </Grid.RowDefinitions>
-            <Grid  Grid.Row="0">
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.15*" />
                     <ColumnDefinition Width="0.15*" />
@@ -35,7 +40,7 @@
                     <ColumnDefinition Width="0.15*" />
                     <ColumnDefinition Width="0.15*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="2" Name="lblHeader" FontSize="40" Margin="200 110 50 10"  Foreground="#FF301F68" FontWeight="Bold" MouseLeftButtonDown="lblHeader_MouseLeftButtonDown">Style number: 12.02.008546</Label>
+                <Label Grid.Column="2" Name="lblHeader" FontSize="40" Margin="150 80 50 10"  Foreground="#FF301F68" FontWeight="Bold" MouseLeftButtonDown="lblHeader_MouseLeftButtonDown">Style number: 12.02.008546</Label>
                 <Button Name="btnDescription" Grid.Column="1" Style="{StaticResource btnProductInformation}"  Content="Description" Click="Button_Click_2"  >
                     <Button.Effect>
                         <DropShadowEffect BlurRadius="10" ShadowDepth="10" Opacity="0.8"/>
@@ -47,7 +52,7 @@
                     </Button.Effect>
                 </Button>
             </Grid>
-            <Grid Name="GrInformation" Grid.Row="1" Visibility="Visible">
+            <Grid Name="GrInformation" Grid.Row="1" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.1*" />
                     <ColumnDefinition Width="0.4*" />
@@ -105,31 +110,28 @@
                         <RowDefinition Height="0.3*" />
                     </Grid.RowDefinitions>
                     <Image  Name="imgMain" Source="7.jpg" Stretch="Fill" Grid.ColumnSpan="2" Margin="0,0,0.4,0.2" />
-                    <Button Name="btnAddImage" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Add Image" FontSize="30" Padding="20" Click="btnAddImage_Click" Grid.Column="1" Margin="302,10,351,0" Grid.Row="1"/>
+                    <Button Name="btnAddImage" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Add Image" FontSize="20" Padding="0" Click="btnAddImage_Click" Grid.Column="1" Margin="286,0,364,0" Grid.Row="1" Height="64" Width="190"/>
 
                 </Grid>
                 <UniformGrid Grid.Column="2" Columns="3" Rows="5">
-                    <Image  Name="img1" MouseEnter="img1_MouseEnter"/>
-                    <Image Name="img2" MouseEnter="img2_MouseEnter" />
-                    <Image Name="img3" MouseEnter="img3_MouseEnter" />
-                    <Image Name="img4" MouseEnter="img4_MouseEnter" />
-                    <Image Name="img5" MouseEnter="img5_MouseEnter" />
-                    <Image Name="img6" MouseEnter="img6_MouseEnter" />
-                    <Image Name="img7" MouseEnter="img7_MouseEnter" />
-                    <Image Name="img8" MouseEnter="img8_MouseEnter" />
-                    <Image Name="img9" MouseEnter="img9_MouseEnter" />
-                    <Image Name="img10" MouseEnter="img10_MouseEnter"/>
-                    <Image Name="img11" MouseEnter="img11_MouseEnter"/>
-                    <Image Name="img12" MouseEnter="img12_MouseEnter"/>
+                    <Image Margin="0 10 0 0 " Name="img1" MouseEnter="img1_MouseEnter"/>
+                    <Image Margin="0 10 0 0 " Name="img2" MouseEnter="img2_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img3" MouseEnter="img3_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img4" MouseEnter="img4_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img5" MouseEnter="img5_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img6" MouseEnter="img6_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img7" MouseEnter="img7_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img8" MouseEnter="img8_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img9" MouseEnter="img9_MouseEnter" />
+                    <Image Margin="0 10 0 0 " Name="img10" MouseEnter="img10_MouseEnter"/>
+                    <Image Margin="0 10 0 0 " Name="img11" MouseEnter="img11_MouseEnter"/>
+                    <Image Margin="0 10 0 0 " Name="img12" MouseEnter="img12_MouseEnter"/>
 
                 </UniformGrid>
 
             </Grid>
         </Grid>
         <Grid Visibility="Visible" Name="GrSearch" Margin="65,36,40,34">
-            <Grid.Background>
-                <ImageBrush ImageSource="Untitled-33.jpg"/>
-            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*" />
                 <RowDefinition Height="0.15*"/>
@@ -146,10 +148,10 @@
                     <ColumnDefinition Width="422*" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="1" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Center">Search :</Label>
-                <TextBox x:Name="txtSearch" Margin="10" Grid.Column="2" FontSize="36" KeyDown="TextBox_KeyDown"/>
-                <ComboBox Name="cmbType" DisplayMemberPath="Name" SelectedValuePath="Id" Padding="10" Margin="10" FontSize="24" Grid.Column="3" BorderBrush="#FF1BAC2F" Foreground="Black" FontWeight="Medium" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" SelectionChanged="cmbType_SelectionChanged">
+                <TextBox x:Name="txtSearch" Style="{StaticResource txtCostCentreStyle}"  Margin="10" Grid.Column="2" FontSize="36" KeyDown="TextBox_KeyDown"/>
+                <ComboBox Name="cmbType" DisplayMemberPath="Name" SelectedValuePath="Id" Padding="10" Margin="10" FontSize="24" Grid.Column="3" BorderBrush="#FF1BAC2F" Foreground="Black" FontWeight="Medium" Background="White" SelectionChanged="cmbType_SelectionChanged">
                 </ComboBox>
-                <Button Name="BtnShowSelectedlist" Grid.Column="4" Margin="10 10 100 10" FontSize="25" Click="Button_Click_1">Show List Selected</Button>
+                <Button Name="BtnShowSelectedlist" Grid.Column="4" Margin="0 0 60 0" FontSize="20" Height="60" Click="Button_Click_1">Show List Selected</Button>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
@@ -163,21 +165,25 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel  Grid.Column="1">
                     <Label FontSize="20" MouseDoubleClick="Label_MouseDoubleClick">Category :</Label>
-                    <ComboBox FontSize="20" Height="40" Name="cmbCategory" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="cmbCategory_SelectionChanged" ></ComboBox>
+                    <ComboBox Style="{StaticResource cmbFilter}"  Name="cmbCategory" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="cmbCategory_SelectionChanged"  >
+                        <ComboBox.Background>
+                            <ImageBrush/>
+                        </ComboBox.Background>
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="2">
                     <Label FontSize="20" MouseDoubleClick="Label_MouseDoubleClick_1">Sub Category :</Label>
-                    <ComboBox FontSize="20" Height="40" Name="cmbSubCategory" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="cmbSubCategory_SelectionChanged"></ComboBox>
+                    <ComboBox Style="{StaticResource cmbFilter}"  Name="cmbSubCategory" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="cmbSubCategory_SelectionChanged"></ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="3">
                     <Label FontSize="20" MouseDoubleClick="Label_MouseDoubleClick_2">Product Type :</Label>
-                    <ComboBox FontSize="20" Height="40" Name="cmbProductType" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="cmbProductType_SelectionChanged"></ComboBox>
+                    <ComboBox Style="{StaticResource cmbFilter}" Name="cmbProductType" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="cmbProductType_SelectionChanged"></ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="4">
                     <Label FontSize="20" MouseDoubleClick="Label_MouseDoubleClick_3">Company :</Label>
-                    <ComboBox FontSize="20" Height="40" Name="cmbCompany" DisplayMemberPath="CompanyName" SelectedValuePath="Id" SelectionChanged="cmbCompany_SelectionChanged"></ComboBox>
+                    <ComboBox Style="{StaticResource cmbFilter}" Name="cmbCompany" DisplayMemberPath="CompanyName" SelectedValuePath="Id" SelectionChanged="cmbCompany_SelectionChanged"></ComboBox>
                 </StackPanel>
-                <Button Name="btnAddToList" Grid.Column="5" Margin="25,38,10,4" FontSize="20" Click="btnAddToList_Click">Add To List</Button>
+                <Button Name="btnAddToList" Grid.Column="5" Margin="25,23,10,7" FontSize="20" Click="btnAddToList_Click" Height="Auto">Add To List</Button>
                 <StackPanel Grid.Column="6">
                     <Label FontSize="20"></Label>
                     <Label Name="lblCountResult" FontSize="20">Company :</Label>
