@@ -4,9 +4,304 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Panls"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="AddProduct" Height="900" Width="1800" WindowState="Maximized">
+    <Window.Resources>
+        <system:String x:Key="salam">0 0 0 40</system:String>
+        <Thickness x:Key="LabelMargin" Top="0" Left="0" Right="250" Bottom ="0" />
+        <Thickness x:Key="GrMargin" Top="20" Left="60" Right="0" Bottom ="0" />
+        <system:Double x:Key="myFont">20</system:Double>
+
+    </Window.Resources>
+
     <Grid>
-        
+        <Rectangle Fill="#030D21" Margin="20" RadiusY="50" RadiusX="50" />
+        <Rectangle Margin="40" RadiusY="30" RadiusX="30" >
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFCC201" Offset="0"/>
+                    <GradientStop Color="#FFEEB609" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Fill="#030D21" Margin="50" RadiusY="20" RadiusX="20" />
+        <Rectangle Fill="White" Margin="60" RadiusY="10" RadiusX="10" />
+
+        <Grid Visibility="Visible"  Margin="85,82,78,80">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*" />
+                <RowDefinition  Height="0.7*" />
+                <RowDefinition  Height="0.2*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label  FontSize="40"  Foreground="#FF301F68" FontWeight="Bold">Company Info</Label>
+            </Grid>
+            <ScrollViewer Grid.Row="1" Visibility="Hidden">
+                <Grid Margin="{StaticResource GrMargin}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="0" Grid.Column="0" >
+                        <Label Content="Company" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="0" Grid.Column="1" >
+                        <Label Content="Manufacture" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="1" Grid.Column="0" >
+                        <Label Content="Web Site" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="20" Margin="0 0 300 0"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="1" Grid.Column="1" >
+                        <Label Content="Email" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="2" Grid.Column="0" >
+                        <Label Content="Street Address" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="2" Grid.Column="1" >
+                        <Label Content="Address Line 2" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="3" Grid.Column="0" >
+                        <Label Content="City" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="3" Grid.Column="1" >
+                        <Label Content="State/Provine/Region" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="4" Grid.Column="0" >
+                        <Label Content="ZIP / Postal Code" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="4" Grid.Column="1" >
+                        <Label Content="Country" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="5" Grid.Column="0" >
+                        <Label Content="Phone" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+                    <StackPanel Margin="0 0 0 40" Grid.Row="5" Grid.Column="1" >
+                        <Label Content="Fax" Style="{StaticResource lblAddProduct}"  />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin   }"  />
+                    </StackPanel>
+
+                </Grid>
+            </ScrollViewer>
+            <Grid Grid.Row="1" Margin="{StaticResource GrMargin}" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Label Content="Category" Style="{StaticResource lblAddProduct}" />
+                    <ComboBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <Label Content="Sub Category" Style="{StaticResource lblAddProduct}" />
+                    <ComboBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <Label Content="Product Type" Style="{StaticResource lblAddProduct}" />
+                    <ComboBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <Label Content="Product Tittle" Style="{StaticResource lblAddProduct}" />
+                    <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0">
+                    <Label Content="Brand" Style="{StaticResource lblAddProduct}" />
+                    <ComboBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <Label Content="Country Of Orgin" Style="{StaticResource lblAddProduct}" />
+                    <ComboBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                </StackPanel>
+            </Grid>
+            <ScrollViewer Grid.Row="1" Visibility="Hidden">
+                <Grid  Margin="{StaticResource GrMargin}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                        <Label Content="Color" Style="{StaticResource lblAddProduct}" />
+                        <ComboBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1">
+                        <Label Content="Material" Style="{StaticResource lblAddProduct}" />
+                        <ComboBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="3">
+                        <Label Content="Describe Material" Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}" Height="285" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                     AcceptsReturn="True"  BorderBrush="DarkGray" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Padding="10 5 0 0" >
+                            <TextBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="20"/>
+                                </TransformGroup>
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">
+                        <Label Content="Price" Style="{StaticResource lblAddProduct}" Margin="0 0 0 20" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}" Style="{StaticResource txtCostCentreStyle}" Padding="20"  />
+                    </StackPanel>
+
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer Grid.Row="1" Visibility="Hidden">
+                <Grid  Margin="{StaticResource GrMargin}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.2*" />
+                        <RowDefinition Height="0.2*"  />
+                        <RowDefinition Height="0.2*"  />
+                        <RowDefinition Height="0.2*"  />
+                        <RowDefinition Height="0.2*"  />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Imperial" Height="Auto" Margin="30,0,0,40" Width="142" FontSize="20" Background="#FF2E660E" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-30"/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                        <Button Content="Metric"  Height="Auto" Margin="30,0,0,40" Width="142" FontSize="20" Background="#FF102C3A" RenderTransformOrigin="0.5,0.5" >
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="-10"/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="0">
+                        <Label Content="Width (in)" Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <Label Content="Lenght (in)" Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="0">
+                        <Label Content="Depth (in)" Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1">
+                        <Label Content="Height (in)" Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Grid.Column="0">
+                        <Label Content="Weight (in)" Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Grid.Column="1">
+                        <Label Content="GSM " Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                    </StackPanel>
+
+                </Grid>
+            </ScrollViewer>
+            <ScrollViewer Grid.Row="1">
+                <Grid Margin="{StaticResource GrMargin}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackPanel >
+                        <Label Content="Shiping Method :" Style="{StaticResource LableStyle}" />
+                        <CheckBox Margin="5" Content="Select All" FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="Box"  FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="Bag"  FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="Wrap"  FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="No Packing"  FontSize="20" FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" >
+                        <Label Content="Shiping Method :" Style="{StaticResource LableStyle}" />
+                        <CheckBox Margin="5" Content="Select All" FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="Air Transportation"  FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="Ship Transportation"  FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="Train"  FontSize="20" FontWeight="Bold" />
+                        <CheckBox Margin="5" Content="Truck"  FontSize="20" FontWeight="Bold" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Margin="0 20 0 0" Visibility="Visible">
+                        <Label Content="Special Packing Instructions" Style="{StaticResource lblAddProduct}" />
+                        <TextBox FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}" Height="110" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+                     AcceptsReturn="True"  BorderBrush="DarkGray" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Padding="10 5 0 0" >
+                            <TextBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform Y="20"/>
+                                </TransformGroup>
+                            </TextBox.RenderTransform>
+                        </TextBox>
+                    </StackPanel>
+
+                </Grid>
+            </ScrollViewer>
+
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Margin="0 0 110 0" HorizontalAlignment="Right" FontSize="25" Height="60" MaxWidth="400" MinWidth="300" Content="Back" Grid.Column="0" />
+                <Button Margin="110 0 0 0" HorizontalAlignment="Left" FontSize="25" Height="60" MaxWidth="400" MinWidth="300" Content="Next" Grid.Column="1" />
+            </Grid>
+
+
+        </Grid>
+
+
+
+
+
     </Grid>
+
 </Window>

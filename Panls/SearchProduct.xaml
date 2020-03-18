@@ -8,9 +8,7 @@
         Loaded="Window_Loaded"
         Title="SearchProduct" Height="900" Width="1800" WindowState="Maximized" ShowInTaskbar="False" PreviewKeyDown="Window_PreviewKeyDown">
 
-    <Window.Background>
-        <ImageBrush ImageSource="Untitled-3.jpg" Stretch="None"/>
-    </Window.Background>
+
     <Grid>
         <Rectangle Fill="#030D21" Margin="20" RadiusY="50" RadiusX="50" />
         <Rectangle Margin="40" RadiusY="30" RadiusX="30" >
