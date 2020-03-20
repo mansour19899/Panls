@@ -331,6 +331,13 @@ namespace Panls
             Scr2.Visibility = Visibility.Visible;
             GrResult.Visibility = Visibility.Hidden;
             GrAddInformation.Visibility = Visibility.Visible;
+            txtPrice.Text = "";
+            txtGsm.Text = "";
+            txtWidth.Text = "";
+            txtLenght.Text = "";
+            txtDepth.Text = "";
+            txtHeight.Text = "";
+            txtWeight.Text = "";
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -509,6 +516,21 @@ namespace Panls
         private void txtWeight_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = SetNumeric(sender, e, txtWeight);
+        }
+
+        private void txtGsm_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = SetNumeric(sender, e, txtGsm);
+        }
+
+        private void btnSku_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(product.Sku);
+        }
+
+        private void btnStyleNumber_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(product.StyleNumber);
         }
     }
 }

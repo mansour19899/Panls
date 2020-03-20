@@ -28,7 +28,7 @@
         <Rectangle Fill="#030D21" Margin="50" RadiusY="20" RadiusX="20" />
         <Rectangle Fill="White" Margin="60" RadiusY="10" RadiusX="10" />
 
-        <Grid Name="GrAddInformation" Visibility="Visible"  Margin="85,82,78,80">
+        <Grid Name="GrAddInformation" Visibility="Hidden"  Margin="85,82,78,80">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*" />
                 <RowDefinition  Height="0.7*" />
@@ -238,7 +238,7 @@
                     </StackPanel>
                     <StackPanel Grid.Row="3" Grid.Column="1">
                         <Label Content="GSM " Style="{StaticResource lblAddProduct}" />
-                        <TextBox Name="txtGsm" FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}"  />
+                        <TextBox Name="txtGsm" FontSize="{StaticResource myFont}" Margin="{StaticResource LabelMargin}" KeyDown="txtGsm_KeyDown" />
                     </StackPanel>
 
                 </Grid>
@@ -319,15 +319,15 @@
             <Button Name="NoForAdd" Content="No" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" MinWidth="200" MinHeight="80" FontSize="30" Margin="40 0" Background="#940000" Click="NoForAdd_Click" />
 
         </Grid>
-        <Grid Name="GrResult" Visibility="Hidden" Margin="85,82,78,80" >
+        <Grid Name="GrResult" Visibility="Visible" Margin="85,82,78,80" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*" />
                 <RowDefinition Height="0.9*" />
             </Grid.RowDefinitions>
             <StackPanel  Grid.Row="1">
                 <Label Content="Product Added" HorizontalAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="#FF0A5D00" />
-                <Button Name="btnSku" Content="SKU : 0202014020006098" HorizontalAlignment="Center" FontSize="30" Height="70" Margin="0 40" />
-                <Button Name="btnStyleNumber" Content="Style : 12.02.007961" HorizontalAlignment="Center" FontSize="30" Height="70" Margin="0 10" />
+                <Button Name="btnSku" Content="SKU : 0202014020006098" HorizontalAlignment="Center" FontSize="30" Height="70" Margin="0 40" Click="btnSku_Click" />
+                <Button Name="btnStyleNumber" Content="Style : 12.02.007961" HorizontalAlignment="Center" FontSize="30" Height="70" Margin="0 10" Click="btnStyleNumber_Click"/>
                 <Button Name="btnAddBarcode" Content="Add Barcode" HorizontalAlignment="Center" FontSize="30" Height="70" Margin="0 40" />
                 <Label Content="Do you want to add another product?" HorizontalAlignment="Center" FontSize="30" />
                 <Grid>
