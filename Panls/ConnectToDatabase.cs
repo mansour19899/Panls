@@ -144,5 +144,98 @@ namespace Panls
             var list = db.Images.Where(p => p.Product_Id_fk == Id).Select(p=>p.ImageName.Trim()).Take(6).ToList();
             return list;
         }
+
+        public List<Color> listColors()
+        {
+            var list = db.Colors.ToList();
+            return list;
+        }
+
+        public List<Material> listMaterial()
+        {
+            var list = db.Materials.ToList();
+            return list;
+        }
+
+        public List<Country> countries()
+        {
+            var list = db.Countries.ToList();
+            return list;
+        }
+        public List<Category> categories()
+        {
+            var list = db.Categories.ToList();
+            return list;
+        }
+
+        public List<SubCategory> subCategories()
+        {
+            var list = db.SubCategories.ToList();
+            return list;
+        }
+        public List<CategoriesSubCategory> categoriesSubCategories()
+        {
+            var list = db.CategoriesSubCategories.ToList();
+            return list;
+        }
+        public List<ProductType> productTypes()
+        {
+            var list = db.ProductTypes.ToList();
+            return list;
+        }
+        public List<Brand> brands()
+        {
+            var list = db.Brands.ToList();
+            return list;
+        }
+
+        public string LastSku()
+        {
+            return db.OwnProducts.ToList().LastOrDefault().Sku.Trim();
+        }
+        public string LastStyleNumber()
+        {
+            return db.OwnProducts.ToList().LastOrDefault().StyleNumber.Trim();
+        }
+        
+        public int GiveMeStartId(string mac)
+        {
+            return Convert.ToInt16(db.Users.FirstOrDefault(p => p.MacAdress == mac).StartNumber);
+        }
+        public int GiveMeCompanyId(string mac)
+        {
+            var startId= Convert.ToInt16(db.Users.FirstOrDefault(p => p.MacAdress == mac).StartNumber);
+            int EndId = startId + 10000;
+            var t = db.Companies.ToList().LastOrDefault(p=>p.Id>startId && p.Id<EndId);
+            if (t != null)
+                return t.Id + 1;
+            else
+             return startId+1;
+        }
+        public int GiveMeProductId(string mac)
+        {
+            var startId = Convert.ToInt16(db.Users.FirstOrDefault(p => p.MacAdress == mac).StartNumber);
+            int EndId = startId + 10000;
+            var t = db.OwnProducts.ToList().LastOrDefault(p => p.Id > startId && p.Id < EndId);
+            if (t != null)
+                return t.Id + 1;
+            else
+                return startId + 1;
+        }
+        public void AddCompany(Company company)
+        {
+          db.Companies.Add(company);           
+
+        }
+        public void AddProduct(OwnProduct ownProduct)
+        {
+            db.OwnProducts.Add(ownProduct);
+
+        }
+
+        public int SaveChange()
+        {
+            return db.SaveChanges();
+        }
     }
 }
