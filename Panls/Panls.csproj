@@ -76,6 +76,9 @@
     <Compile Include="AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BackupPanel.xaml.cs">
+      <DependentUpon>BackupPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Barcode.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Page Include="AddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BackupPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -31,5 +31,11 @@ namespace Panls
             Wn.Owner = this;
             Wn.Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddProduct wn = new AddProduct();
+            wn.Show();
+        }
     }
 }

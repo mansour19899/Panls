@@ -310,10 +310,23 @@ namespace Panls
         private void YesForAdd_Click(object sender, RoutedEventArgs e)
         {           
             db.AddProduct(product);
-            btnSku.Content ="SKU :"+ product.Sku;
-            btnStyleNumber.Content ="# : "+ product.StyleNumber;
-            GrReview.Visibility = Visibility.Hidden;
-            GrResult.Visibility = Visibility.Visible;
+           int count= db.SaveChange();
+            if(count>0)
+            {
+                btnSku.Content = "SKU :" + product.Sku;
+                btnStyleNumber.Content = "# : " + product.StyleNumber;
+                GrReview.Visibility = Visibility.Hidden;
+                GrResult.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Error From save db");
+                step = 3;
+                Scr4.Visibility = Visibility.Visible;
+                GrReview.Visibility = Visibility.Hidden;
+                GrAddInformation.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void NoForAdd_Click(object sender, RoutedEventArgs e)
@@ -526,11 +539,15 @@ namespace Panls
         private void btnSku_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(product.Sku);
+            lblStyleCopied.Visibility = Visibility.Hidden;
+            lblSkuCopied.Visibility = Visibility.Visible;
         }
 
         private void btnStyleNumber_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(product.StyleNumber);
+            lblSkuCopied.Visibility = Visibility.Hidden;
+            lblStyleCopied.Visibility = Visibility.Visible;
         }
     }
 }
