@@ -4,9 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Panls"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="BackupPanel" Height="450" Width="800">
+        Title="Back Up" Height="900" Width="1200" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid>
-        
+        <Rectangle Fill="#030D21" Margin="20" RadiusY="50" RadiusX="50" />
+        <Rectangle Margin="40" RadiusY="30" RadiusX="30" >
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFCC201" Offset="0"/>
+                    <GradientStop Color="#FFEEB609" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Fill="#030D21" Margin="50" RadiusY="20" RadiusX="20" />
+        <Rectangle Fill="White" Margin="60" RadiusY="10" RadiusX="10" />
+        <Grid Margin="85,82,78,80">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.9*" />
+            </Grid.RowDefinitions>
+            <Label Content="Back Up Panel" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Foreground="Navy" FontWeight="Heavy" />
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Content="Make Backup Excel" FontSize="25" Height="100" Width="300" Background="#FF59A052" Click="Button_Click" />
+                <Label Name="lblResult" Content="Backup Created" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="Blue" Padding="0 30 0 0" Visibility="Hidden"/>
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>

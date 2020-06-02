@@ -595,5 +595,23 @@ namespace Panls
 
 
         }
+
+        private void LblUPC_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(SelectedProduct.Barcode.BarcodeNumber + "Copied");
+            Clipboard.SetText(SelectedProduct.Barcode.BarcodeNumber.Trim());
+        }
+
+        private void LblStyleNumber_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(SelectedProduct.StyleNumber + "Copied");
+            Clipboard.SetText(SelectedProduct.StyleNumber.Trim());
+        }
+
+        private void LblSku_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show(SelectedProduct.Sku + "Copied");
+            Clipboard.SetText(SelectedProduct.Sku.Trim());
+        }
     }
 }
